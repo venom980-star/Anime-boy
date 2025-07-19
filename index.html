@@ -3,95 +3,128 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Anime Boy - Straw Hat Spirit</title>
+  <title>Anime Boy - Luffy's Legacy</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Zilla+Slab&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Zilla Slab', serif;
-      background: linear-gradient(to bottom, #0d0d1a, #1e1e2f);
-      color: #f0f0f0;
+      color: #fff;
+      background-color: #000;
+      overflow-x: hidden;
+      position: relative;
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      z-index: 1;
+    }
+    video.bg-video {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      opacity: 0.25;
+    }
+    .container {
       padding: 2rem;
-      transition: background 0.5s, color 0.5s;
       text-align: center;
+      max-width: 900px;
+      margin: auto;
     }
     h1 {
       font-family: 'Orbitron', sans-serif;
       font-size: 3rem;
-      margin-bottom: 1rem;
-      color: #ffcc00;
-    }
-    p {
-      font-size: 1.2rem;
-      max-width: 800px;
-      line-height: 1.7;
+      color: #ffd700;
       margin-bottom: 2rem;
     }
+    .poem-line {
+      font-size: 1.2rem;
+      margin: 12px 0;
+      opacity: 0;
+      animation: fadeIn 1s ease forwards;
+    }
+    .poem-line:nth-child(1) { animation-delay: 0.5s; }
+    .poem-line:nth-child(2) { animation-delay: 1s; }
+    .poem-line:nth-child(3) { animation-delay: 1.5s; }
+    .poem-line:nth-child(4) { animation-delay: 2s; }
+    .poem-line:nth-child(5) { animation-delay: 2.5s; }
+    .poem-line:nth-child(6) { animation-delay: 3s; }
+    .poem-line:nth-child(7) { animation-delay: 3.5s; }
+    .poem-line:nth-child(8) { animation-delay: 4s; }
+    .poem-line:nth-child(9) { animation-delay: 4.5s; }
+    .poem-line:nth-child(10) { animation-delay: 5s; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     .button-row {
       display: flex;
       flex-wrap: wrap;
       gap: 1rem;
       justify-content: center;
-      margin-bottom: 2rem;
+      margin-top: 2rem;
     }
     button, .donate-btn {
-      background-color: #ffcc00;
+      background: #ffcc00;
       color: #000;
-      border: none;
       padding: 10px 20px;
+      border: none;
       border-radius: 30px;
-      font-weight: bold;
       cursor: pointer;
-      transition: background 0.3s ease;
+      font-weight: bold;
     }
     button:hover, .donate-btn:hover {
       background-color: #e6b800;
     }
-    .dark-mode {
-      background: linear-gradient(to bottom, #000000, #1a1a1a);
-      color: #d0d0d0;
-    }
-    .dark-mode .toggle-btn {
-      background-color: #333;
+    .toggle-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #333;
       color: #fff;
+    }
+    .dark-mode {
+      background-color: #000;
+      color: #ccc;
     }
   </style>
 </head>
 <body>
-  <button class="toggle-btn" onclick="toggleDarkMode()" style="position: fixed; top: 20px; right: 20px;">Dark Mode</button>
-  <h1>Straw Hat Spirit</h1>
-  <p>
-    A hat of straw, a heart so bold,<br>
-    A tale of dreams the sea has told.<br>
-    With fists of fire and soul so free,<br>
-    He sails to claim his destiny.<br><br>
 
-    Luffy, the name the world shall shout,<br>
-    Through storm and pain, he has no doubt.<br>
-    With friends who stand through thick and thin,<br>
-    He fights with fire that burns within.<br><br>
+  <!-- 🎥 Background Video -->
+  <video autoplay loop muted playsinline class="bg-video">
+    <source src="https://cdn.pixabay.com/vimeo/902139151/one-piece-152811.mp4?width=960&hash=c8c19683796ac229a9fe28ce4e4ad1f5fe657e12" type="video/mp4">
+  </video>
 
-    He laughs where others turn away,<br>
-    He charges in, come what may.<br>
-    For treasure? No. He seeks much more—<br>
-    A life of freedom, legend, lore.<br><br>
+  <!-- 🌑 Dark Mode Toggle -->
+  <button class="toggle-btn" onclick="toggleDarkMode()">Dark Mode</button>
 
-    So when you hear the ocean sing,<br>
-    Of pirates and a future king—<br>
-    Remember this: the one who tried,<br>
-    With straw hat high and unbreakable pride.
-  </p>
+  <div class="container">
+    <h1>Straw Hat Spirit</h1>
 
-  <div class="button-row">
-    <button onclick="likePoem()">❤️ Like (<span id='like-count'>0</span>)</button>
-    <button onclick="sharePoem()">📤 Share</button>
-    <button onclick="savePDF()">📄 Save as PDF</button>
-    <a class="donate-btn" href="https://www.buymeacoffee.com/" target="_blank">💖 Donate</a>
+    <!-- ✨ Animated Poem -->
+    <div id="poem">
+      <p class="poem-line">A hat of straw, a heart so bold,</p>
+      <p class="poem-line">A tale of dreams the sea has told.</p>
+      <p class="poem-line">With fists of fire and soul so free,</p>
+      <p class="poem-line">He sails to claim his destiny.</p>
+      <p class="poem-line">Luffy, the name the world shall shout,</p>
+      <p class="poem-line">Through storm and pain, he has no doubt.</p>
+      <p class="poem-line">With friends who stand through thick and thin,</p>
+      <p class="poem-line">He fights with fire that burns within.</p>
+      <p class="poem-line">So when you hear the ocean sing,</p>
+      <p class="poem-line">Remember this: the Pirate King.</p>
+    </div>
+
+    <!-- 🔘 Buttons -->
+    <div class="button-row">
+      <button onclick="likePoem()">❤️ Like (<span id='like-count'>0</span>)</button>
+      <button onclick="sharePoem()">📤 Share</button>
+      <button onclick="savePDF()">📄 Save as PDF</button>
+      <a class="donate-btn" href="https://www.buymeacoffee.com/" target="_blank">💖 Donate</a>
+    </div>
   </div>
 
   <script>
@@ -109,7 +142,7 @@
           url: window.location.href
         });
       } else {
-        alert("Sharing not supported. Please copy the URL: " + window.location.href);
+        alert("Sharing not supported. Copy this URL: " + window.location.href);
       }
     }
 
@@ -121,5 +154,6 @@
       document.body.classList.toggle('dark-mode');
     }
   </script>
+
 </body>
 </html>
