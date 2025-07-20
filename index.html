@@ -2,157 +2,217 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Anime Boy - Luffy's Legacy</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Zilla+Slab&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anime Boy - Straw Hat King</title>
+  <link rel="icon" href="https://i.ibb.co/mD7Qbvf/luffy-icon.png" />
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: 'Zilla Slab', serif;
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0d0d0d;
       color: #fff;
-      background-color: #000;
-      overflow-x: hidden;
-      position: relative;
-      min-height: 100vh;
+      padding: 20px;
     }
-    video.bg-video {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: -1;
-      opacity: 0.3;
-    }
-    .container {
-      padding: 2rem;
-      text-align: center;
-      max-width: 900px;
-      margin: auto;
+    header {
+      background-color: #1a1a1a;
+      padding: 10px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
     h1 {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 3rem;
-      color: #ffd700;
-      margin-bottom: 2rem;
+      color: #ff4747;
     }
-    .poem-line {
-      font-size: 1.2rem;
-      margin: 12px 0;
-      opacity: 0;
-      animation: fadeIn 1s ease forwards;
+    .poem {
+      white-space: pre-wrap;
+      font-size: 18px;
+      border-left: 4px solid #ff4747;
+      padding-left: 15px;
+      margin: 20px 0;
+      animation: typing 4s steps(40, end);
     }
-    .poem-line:nth-child(n) {
-      animation-delay: calc(0.5s * var(--i));
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
     }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .button-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      justify-content: center;
-      margin-top: 2rem;
-    }
-    button, .donate-btn {
-      background: #ffcc00;
-      color: #000;
-      padding: 10px 20px;
+    button, select {
+      background-color: #ff4747;
       border: none;
-      border-radius: 30px;
+      color: white;
+      padding: 10px;
+      margin: 5px;
       cursor: pointer;
-      font-weight: bold;
+      border-radius: 8px;
     }
-    button:hover, .donate-btn:hover {
-      background-color: #e6b800;
+    .share-btns img {
+      width: 28px;
+      margin-right: 10px;
+      cursor: pointer;
     }
-    .toggle-btn {
+    .comment-box, .poll, .quotes {
+      margin: 20px 0;
+    }
+    textarea {
+      width: 100%;
+      height: 80px;
+      margin-top: 10px;
+    }
+    .dark-toggle {
       position: fixed;
-      top: 20px;
+      bottom: 20px;
       right: 20px;
-      background: #333;
-      color: #fff;
-    }
-    .dark-mode {
-      background-color: #000;
-      color: #ccc;
-    }
-    .luffy-img {
-      width: 250px;
-      border-radius: 20px;
-      box-shadow: 0 0 20px #ffd700;
-      margin-bottom: 20px;
     }
   </style>
 </head>
 <body>
 
-  <!-- 🎥 Background Video -->
-  <video autoplay loop muted playsinline class="bg-video">
-    <source src="https://www.w3schools.com/howto/rain.mp4" type="video/mp4">
-  </video>
+<header>
+  <h1>Straw Hat King - Luffy Tribute</h1>
+</header>
 
-  <!-- 🌑 Dark Mode Toggle -->
-  <button class="toggle-btn" onclick="toggleDarkMode()">Dark Mode</button>
+<main>
+  <section class="poem">
+    I'm gonna be King of the Pirates, he said,<br>
+    With a hat of straw upon his head.<br>
+    Through storm and sea, with mighty will,<br>
+    He sails ahead, his dream fulfilled.<br><br>
+    Nakama close, through loss and pain,<br>
+    He bears the burden, breaks the chain.<br>
+    No gold or throne, just freedom's call,<br>
+    For Luffy, that's worth more than all.
+  </section>
 
-  <div class="container">
-    <!-- 🖼️ Luffy Image -->
-    <img src="https://i.pinimg.com/originals/b0/d5/6e/b0d56ea091a7a15246e7ddc477d2538a.jpg" alt="Luffy" class="luffy-img">
-
-    <h1>Straw Hat Spirit</h1>
-
-    <!-- ✨ Animated Poem -->
-    <div id="poem">
-      <p class="poem-line" style="--i:1">A hat of straw, a heart so bold,</p>
-      <p class="poem-line" style="--i:2">A tale of dreams the sea has told.</p>
-      <p class="poem-line" style="--i:3">With fists of fire and soul so free,</p>
-      <p class="poem-line" style="--i:4">He sails to claim his destiny.</p>
-      <p class="poem-line" style="--i:5">Luffy, the name the world shall shout,</p>
-      <p class="poem-line" style="--i:6">Through storm and pain, he has no doubt.</p>
-      <p class="poem-line" style="--i:7">With friends who stand through thick and thin,</p>
-      <p class="poem-line" style="--i:8">He fights with fire that burns within.</p>
-      <p class="poem-line" style="--i:9">So when you hear the ocean sing,</p>
-      <p class="poem-line" style="--i:10">Remember this: the Pirate King.</p>
-    </div>
-
-    <!-- 🔘 Buttons -->
-    <div class="button-row">
-      <button onclick="likePoem()">❤️ Like (<span id='like-count'>0</span>)</button>
-      <button onclick="sharePoem()">📤 Share</button>
-      <button onclick="savePDF()">📄 Save as PDF</button>
-      <a class="donate-btn" href="https://www.buymeacoffee.com/" target="_blank">💖 Donate</a>
-    </div>
+  <div>
+    <button onclick="likePoem()">❤️ Like (<span id="likeCount">0</span>)</button>
+    <button onclick="sharePoem()">🔗 Share</button>
+    <button onclick="downloadPDF()">📄 Save as PDF</button>
+    <button onclick="donate()">💰 Donate</button>
   </div>
 
-  <script>
-    let likes = 0;
-    function likePoem() {
-      likes++;
-      document.getElementById('like-count').innerText = likes;
-    }
+  <div class="share-btns">
+    <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" onclick="shareOnWhatsApp()" />
+    <img src="https://img.icons8.com/color/48/000000/twitter--v1.png" onclick="shareOnTwitter()" />
+    <img src="https://img.icons8.com/ios-glyphs/30/ffffff/copy.png" onclick="copyLink()" />
+  </div>
 
-    function sharePoem() {
-      if (navigator.share) {
-        navigator.share({
-          title: 'Straw Hat Spirit',
-          text: 'Check out this amazing Luffy poem!',
-          url: window.location.href
-        });
-      } else {
-        alert("Sharing not supported. Copy this URL: " + window.location.href);
-      }
-    }
+  <div class="comment-box">
+    <h3>💬 Leave a Comment</h3>
+    <textarea id="commentText" placeholder="Your thoughts..."></textarea><br>
+    <button onclick="postComment()">Post Comment</button>
+    <ul id="commentList"></ul>
+  </div>
 
-    function savePDF() {
-      window.print();
-    }
+  <div class="poll">
+    <h3>🗳️ Who's Your Favorite Character?</h3>
+    <select id="characterSelect">
+      <option>Luffy</option>
+      <option>Zoro</option>
+      <option>Sanji</option>
+      <option>Nami</option>
+      <option>Chopper</option>
+    </select>
+    <button onclick="vote()">Vote</button>
+    <div id="voteResult"></div>
+  </div>
 
-    function toggleDarkMode() {
-      document.body.classList.toggle('dark-mode');
+  <div class="quotes">
+    <h3>🌀 Random Anime Quote</h3>
+    <button onclick="generateQuote()">New Quote</button>
+    <p id="quoteText">"Power comes in response to a need, not a desire." - Goku</p>
+  </div>
+
+  <audio id="bgMusic" loop>
+    <source src="https://vgmsite.com/soundtracks/one-piece-opening-1/hwulbqhz/01%20-%20We%20Are.mp3" type="audio/mp3">
+  </audio>
+  <button onclick="toggleMusic()">🎵 Toggle Music</button>
+</main>
+
+<div class="dark-toggle">
+  <button onclick="toggleTheme()">🌗 Toggle Theme</button>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
+<script>
+  let likeCount = localStorage.getItem("likeCount") || 0;
+  document.getElementById("likeCount").innerText = likeCount;
+
+  function likePoem() {
+    likeCount++;
+    localStorage.setItem("likeCount", likeCount);
+    document.getElementById("likeCount").innerText = likeCount;
+  }
+
+  function sharePoem() {
+    alert("Use buttons below to share!");
+  }
+
+  function shareOnWhatsApp() {
+    window.open("https://wa.me/?text=" + encodeURIComponent(location.href));
+  }
+
+  function shareOnTwitter() {
+    window.open("https://twitter.com/intent/tweet?text=" + encodeURIComponent(location.href));
+  }
+
+  function copyLink() {
+    navigator.clipboard.writeText(location.href);
+    alert("Link copied!");
+  }
+
+  function downloadPDF() {
+    html2pdf().from(document.body).save("luffy-poem.pdf");
+  }
+
+  function donate() {
+    window.open("upi://pay?pa=yourupi@bank&pn=Anime%20Boy&am=50&cu=INR", "_blank");
+  }
+
+  function postComment() {
+    const text = document.getElementById("commentText").value;
+    if (text.trim() !== "") {
+      const li = document.createElement("li");
+      li.innerText = text;
+      document.getElementById("commentList").appendChild(li);
+      document.getElementById("commentText").value = "";
     }
-  </script>
+  }
+
+  function vote() {
+    const choice = document.getElementById("characterSelect").value;
+    document.getElementById("voteResult").innerText = `You voted for ${choice}!`;
+  }
+
+  const quotes = [
+    '"Power comes in response to a need, not a desire." - Goku',
+    '"A lesson without pain is meaningless." - Edward Elric',
+    '"Fear is not evil. It tells you what your weakness is." - Gildarts',
+    '"The world is not beautiful. Therefore, it is." - Kino',
+    '"You should enjoy the little detours." - Gintoki'
+  ];
+
+  function generateQuote() {
+    const rand = quotes[Math.floor(Math.random() * quotes.length)];
+    document.getElementById("quoteText").innerText = rand;
+  }
+
+  let isMusicPlaying = false;
+  function toggleMusic() {
+    const music = document.getElementById("bgMusic");
+    if (isMusicPlaying) {
+      music.pause();
+    } else {
+      music.play();
+    }
+    isMusicPlaying = !isMusicPlaying;
+  }
+
+  function toggleTheme() {
+    const body = document.body;
+    const dark = body.style.backgroundColor === "white";
+    body.style.backgroundColor = dark ? "#0d0d0d" : "white";
+    body.style.color = dark ? "white" : "#111";
+  }
+</script>
 
 </body>
 </html>
