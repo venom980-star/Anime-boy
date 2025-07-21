@@ -1,218 +1,62 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Anime Boy - Straw Hat King</title>
-  <link rel="icon" href="https://i.ibb.co/mD7Qbvf/luffy-icon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Luffy Crying Sketch – Download</title>
   <style>
     body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #0d0d0d;
+      background-color: #111;
       color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
       padding: 20px;
     }
-    header {
-      background-color: #1a1a1a;
-      padding: 10px 20px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
+
     h1 {
-      color: #ff4747;
+      text-align: center;
+      margin-bottom: 20px;
     }
-    .poem {
-      white-space: pre-wrap;
-      font-size: 18px;
-      border-left: 4px solid #ff4747;
-      padding-left: 15px;
-      margin: 20px 0;
-      animation: typing 4s steps(40, end);
+
+    video {
+      max-width: 100%;
+      height: auto;
+      border-radius: 20px;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
     }
-    @keyframes typing {
-      from { width: 0 }
-      to { width: 100% }
+
+    a.download-btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 24px;
+      background-color: #e84118;
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.1rem;
+      border-radius: 10px;
+      transition: background-color 0.3s ease;
     }
-    button, select {
-      background-color: #ff4747;
-      border: none;
-      color: white;
-      padding: 10px;
-      margin: 5px;
-      cursor: pointer;
-      border-radius: 8px;
-    }
-    .share-btns img {
-      width: 28px;
-      margin-right: 10px;
-      cursor: pointer;
-    }
-    .comment-box, .poll, .quotes {
-      margin: 20px 0;
-    }
-    textarea {
-      width: 100%;
-      height: 80px;
-      margin-top: 10px;
-    }
-    .dark-toggle {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
+
+    a.download-btn:hover {
+      background-color: #c23616;
     }
   </style>
 </head>
 <body>
+  <h1>This moment broke Luffy... 💔</h1>
+  
+  <!-- Video Player -->
+  <video controls autoplay muted loop playsinline>
+    <source src="your-video.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
 
-<header>
-  <h1>Straw Hat King - Luffy Tribute</h1>
-</header>
-
-<main>
-  <section class="poem">
-    I'm gonna be King of the Pirates, he said,<br>
-    With a hat of straw upon his head.<br>
-    Through storm and sea, with mighty will,<br>
-    He sails ahead, his dream fulfilled.<br><br>
-    Nakama close, through loss and pain,<br>
-    He bears the burden, breaks the chain.<br>
-    No gold or throne, just freedom's call,<br>
-    For Luffy, that's worth more than all.
-  </section>
-
-  <div>
-    <button onclick="likePoem()">❤️ Like (<span id="likeCount">0</span>)</button>
-    <button onclick="sharePoem()">🔗 Share</button>
-    <button onclick="downloadPDF()">📄 Save as PDF</button>
-    <button onclick="donate()">💰 Donate</button>
-  </div>
-
-  <div class="share-btns">
-    <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" onclick="shareOnWhatsApp()" />
-    <img src="https://img.icons8.com/color/48/000000/twitter--v1.png" onclick="shareOnTwitter()" />
-    <img src="https://img.icons8.com/ios-glyphs/30/ffffff/copy.png" onclick="copyLink()" />
-  </div>
-
-  <div class="comment-box">
-    <h3>💬 Leave a Comment</h3>
-    <textarea id="commentText" placeholder="Your thoughts..."></textarea><br>
-    <button onclick="postComment()">Post Comment</button>
-    <ul id="commentList"></ul>
-  </div>
-
-  <div class="poll">
-    <h3>🗳️ Who's Your Favorite Character?</h3>
-    <select id="characterSelect">
-      <option>Luffy</option>
-      <option>Zoro</option>
-      <option>Sanji</option>
-      <option>Nami</option>
-      <option>Chopper</option>
-    </select>
-    <button onclick="vote()">Vote</button>
-    <div id="voteResult"></div>
-  </div>
-
-  <div class="quotes">
-    <h3>🌀 Random Anime Quote</h3>
-    <button onclick="generateQuote()">New Quote</button>
-    <p id="quoteText">"Power comes in response to a need, not a desire." - Goku</p>
-  </div>
-
-  <audio id="bgMusic" loop>
-    <source src="https://vgmsite.com/soundtracks/one-piece-opening-1/hwulbqhz/01%20-%20We%20Are.mp3" type="audio/mp3">
-  </audio>
-  <button onclick="toggleMusic()">🎵 Toggle Music</button>
-</main>
-
-<div class="dark-toggle">
-  <button onclick="toggleTheme()">🌗 Toggle Theme</button>
-</div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
-<script>
-  let likeCount = localStorage.getItem("likeCount") || 0;
-  document.getElementById("likeCount").innerText = likeCount;
-
-  function likePoem() {
-    likeCount++;
-    localStorage.setItem("likeCount", likeCount);
-    document.getElementById("likeCount").innerText = likeCount;
-  }
-
-  function sharePoem() {
-    alert("Use buttons below to share!");
-  }
-
-  function shareOnWhatsApp() {
-    window.open("https://wa.me/?text=" + encodeURIComponent(location.href));
-  }
-
-  function shareOnTwitter() {
-    window.open("https://twitter.com/intent/tweet?text=" + encodeURIComponent(location.href));
-  }
-
-  function copyLink() {
-    navigator.clipboard.writeText(location.href);
-    alert("Link copied!");
-  }
-
-  function downloadPDF() {
-    html2pdf().from(document.body).save("luffy-poem.pdf");
-  }
-
-  function donate() {
-    window.open("upi://pay?pa=yourupi@bank&pn=Anime%20Boy&am=50&cu=INR", "_blank");
-  }
-
-  function postComment() {
-    const text = document.getElementById("commentText").value;
-    if (text.trim() !== "") {
-      const li = document.createElement("li");
-      li.innerText = text;
-      document.getElementById("commentList").appendChild(li);
-      document.getElementById("commentText").value = "";
-    }
-  }
-
-  function vote() {
-    const choice = document.getElementById("characterSelect").value;
-    document.getElementById("voteResult").innerText = `You voted for ${choice}!`;
-  }
-
-  const quotes = [
-    '"Power comes in response to a need, not a desire." - Goku',
-    '"A lesson without pain is meaningless." - Edward Elric',
-    '"Fear is not evil. It tells you what your weakness is." - Gildarts',
-    '"The world is not beautiful. Therefore, it is." - Kino',
-    '"You should enjoy the little detours." - Gintoki'
-  ];
-
-  function generateQuote() {
-    const rand = quotes[Math.floor(Math.random() * quotes.length)];
-    document.getElementById("quoteText").innerText = rand;
-  }
-
-  let isMusicPlaying = false;
-  function toggleMusic() {
-    const music = document.getElementById("bgMusic");
-    if (isMusicPlaying) {
-      music.pause();
-    } else {
-      music.play();
-    }
-    isMusicPlaying = !isMusicPlaying;
-  }
-
-  function toggleTheme() {
-    const body = document.body;
-    const dark = body.style.backgroundColor === "white";
-    body.style.backgroundColor = dark ? "#0d0d0d" : "white";
-    body.style.color = dark ? "white" : "#111";
-  }
-</script>
-
+  <!-- Download Button -->
+  <a class="download-btn" href="your-video.mp4" download>📥 Download Video</a>
 </body>
 </html>
